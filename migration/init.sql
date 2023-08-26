@@ -15,16 +15,20 @@ CREATE TABLE Product (
 
 -- 顧客情報テーブルを作成する
 CREATE TABLE Customer (
+    PostCode VARCHAR(8),
+    CreditNumber VARCHAR(16),
+    AddressLine VARCHAR(255),
     CustomerID INT PRIMARY KEY,
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
-    Email unique VARCHAR(50),
+    Email VARCHAR(50) unique,
     Phone VARCHAR(20),
     DeleteDate DATE
 );
 
 -- 注文情報テーブルを作成する
 CREATE TABLE ProductOrder(
+    PaymentMethod INT,
     OrderID INT PRIMARY KEY,
     CustomerID INT,
     OrderDate DATE,

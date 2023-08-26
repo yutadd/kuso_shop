@@ -1,4 +1,4 @@
 <?php
-$username = $_SESSION["name"];
-echo "ろぐいんされてるよ<br />ユーザー名：" . $username;
-echo 'ログアウトする&gt;&gt;<a href="logout">';
+$email = $_SESSION["email"];
+echo "ろぐいんされてるよ<br />ユーザー名：" . $email;
+echo '&gt;&gt;<a href="logout.php">ログアウトする</a>';

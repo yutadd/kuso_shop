@@ -41,13 +41,13 @@ for i in range(num_users):
     customer_id = i + 1
     first_name = random.choice(first_names)
     last_name = random.choice(last_names)
-    email = f"{first_name.lower()}.{last_name.lower()}@example.com"
+    email = f"{first_name.lower()}.{last_name.lower()+str(customer_id)}@example.com"
     phone = f"080-{random.randint(1000,9999)}-{random.randint(1000,9999)}"
     print(
         f"INSERT INTO Customer (CustomerID, FirstName, LastName, Email, Phone) VALUES ({customer_id}, '{first_name}', '{last_name}', '{email}', '{phone}');")
 
     # Generate a random password for the customer
-    password = f"{first_name}{random.randint(1000,9999)}"
+    password = "password"  # f"{first_name}{random.randint(1000,9999)}"
     # Hash the password using bcrypt
     password_hash = bcrypt.hashpw(password.encode(
         'utf-8'), bcrypt.gensalt()).decode('utf-8')
