@@ -1,9 +1,6 @@
-home
-	loggedin
-	loggedout
-login
-	loginUI
+home(loggedin,loggedout)
+login(loginUI)
 logout
 signup
-cart(商品リスト＝＞住所＝＞支払い方法＝＞確認)
+cart[商品リスト＝＞住所＝＞支払い方法＝＞確認]
 orderSubmit

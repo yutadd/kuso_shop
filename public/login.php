@@ -15,7 +15,7 @@ try {
 $email = filter_input(INPUT_POST, "email");
 $password = filter_input(INPUT_POST, "password");
 if ($email != null && $email != "") {
-    $stmt = $dbh->prepare('SELECT CustomerID,Email FROM Customer WHERE Email = ? ');
+    $stmt = $dbh->prepare('SELECT CustomerID,Email,DeleteDate FROM Customer WHERE Email = ? AND DeleteDate IS NULL');
     $stmt->bindValue(1, $email, PDO::PARAM_STR);
     $stmt->execute();
     $user = $stmt->fetch();
@@ -52,4 +52,4 @@ if ($email != null && $email != "") {
     }
     echo "ユーザー名かパスワードが違います";
 }
-require("loginUI.php");
+require("../components/loginUI.php");
