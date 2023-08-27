@@ -31,21 +31,18 @@ $stmt->execute();
 
 <table>
     <script type="module" src="static/module.js"></script>
-
+    <div id="jsonp"></div>
     <tr>
         <th>Product img</th>
         <th>Product Name</th>
         <th>Price</th>
         <th>Description</th>
     </tr>
+    <!--画面遷移無しでカートに追加できるようにしたい-->
     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
             <td>
-                <script>
-                    window.caller<?php echo $row['ProductID'] ?>= function() {
-                        window.add2Cart(<?php echo $row['ProductID'] ?>, <?php echo $row['ProductName'] ?>);
-                    }
-                </script>
+                <?php echo "<input type=\"hidden\" name=\"product\" value=" . $row['ProductID'] . " ?>" ?>
             </td>
             <td><img src=<?php echo "static/" . $row['ProductName'] . ".webp" ?> width="300px" ; alt=""></td>
             <td><?php echo $row['ProductID']; ?></td>
