@@ -1,3 +1,4 @@
+use kuso_shop;
 INSERT INTO Customer (CustomerID, FirstName, LastName, Email, Phone) VALUES (1, 'Hanako', 'Yamamoto', 'hanako.yamamoto1@example.com', '080-3660-4771');
 INSERT INTO Password (CustomerID, PasswordHash) VALUES (1, '$2b$12$yRpghuWNRps9HhYctFhgfuzCpGIpOMwDY4ck41tXGp99hg/IsYW1W');
 INSERT INTO Customer (CustomerID, FirstName, LastName, Email, Phone) VALUES (2, 'Yoko', 'Takahashi', 'yoko.takahashi2@example.com', '080-7823-3650');

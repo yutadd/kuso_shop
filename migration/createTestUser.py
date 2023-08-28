@@ -35,7 +35,7 @@ product_descriptions = ["Comfortable and stylish T-Shirt.", "Warm and cozy hoodi
                         "Elegant and beautiful dress.",
                         "Stylish and practical hat.",
                         "Warm and cozy scarf."]
-
+print("use kuso_shop;")
 # Generate data for customers
 for i in range(num_users):
     customer_id = i + 1
