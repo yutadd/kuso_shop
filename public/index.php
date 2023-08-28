@@ -41,15 +41,12 @@ $stmt->execute();
     <!--画面遷移無しでカートに追加できるようにしたい-->
     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
-            <td>
-                <?php echo "<input type=\"hidden\" name=\"product\" value=" . $row['ProductID'] . " ?>" ?>
-            </td>
             <td><img src=<?php echo "static/" . $row['ProductName'] . ".webp" ?> width="300px" ; alt=""></td>
             <td><?php echo $row['ProductID']; ?></td>
             <td><?php echo $row['ProductName']; ?></td>
             <td><?php echo "\\" . $row['Price']; ?></td>
             <td><?php echo $row['Description']; ?></td>
-            <td><button type="button" id="addproduct" onclick="javascript:window.caller()">購入</button></td>
+            <td ><button type="button" id="addproduct" onclick="window.add2Cart('<?php echo $row['ProductID']; ?>', '<?php echo $row['ProductName']; ?>')">購入</button></td>
         </tr>
     <?php } ?>
 </table>
