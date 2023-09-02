@@ -34,11 +34,13 @@ $stmt->execute();
     <div id="jsonp"></div>
     <tr>
         <th>Product img</th>
+        <th>Product ID</th>
         <th>Product Name</th>
         <th>Price</th>
         <th>Description</th>
+        <th>Count</th>
+        <th>Submit</th>
     </tr>
-    <!--画面遷移無しでカートに追加できるようにしたい-->
     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
             <td><img src=<?php echo "static/" . $row['ProductName'] . ".webp" ?> width="300px" ; alt=""></td>
@@ -46,7 +48,8 @@ $stmt->execute();
             <td><?php echo $row['ProductName']; ?></td>
             <td><?php echo "\\" . $row['Price']; ?></td>
             <td><?php echo $row['Description']; ?></td>
-            <td ><button type="button" id="addproduct" onclick="window.add2Cart('<?php echo $row['ProductID']; ?>', '<?php echo $row['ProductName']; ?>')">購入</button></td>
+            <td><input type="number" name="count" value="0" id="<?php echo "count" . $row['ProductID'] ?>"></td>
+            <td><button type="button" id="addproduct" onclick="window.add2Cart('<?php echo $row['ProductID']; ?>', '<?php echo $row['ProductName']; ?>',parseInt(document.getElementById('<?php echo 'count' . $row['ProductID'] ?>').value))">購入</button></td>
         </tr>
     <?php } ?>
 </table>
