@@ -63,7 +63,14 @@ for i in range(len(product_names)):
     description = product_descriptions[i]
     print(
         f"INSERT INTO Product (ProductID, ProductName, Price, Description) VALUES ({product_id}, '{product_name}', {price}, '{description}');")
-
+# generate cart
+for i in range(num_users):
+    customer_id = i + 1
+    num_orders = random.randint(1, len(product_names))
+    for product_id in range(1, num_orders):
+        amount = random.randint(min_total_amount, max_total_amount)
+        print(
+            f"INSERT INTO Cart(CustomerID,ProductID, Count) VALUES ( {customer_id}, {product_id}, {amount});")
 # Generate data for orders
 order_id = 1
 for i in range(num_users):
@@ -74,5 +81,5 @@ for i in range(num_users):
             timedelta(days=random.randint(0, (end_date - start_date).days))
         total_amount = random.randint(min_total_amount, max_total_amount)
         print(
-            f"INSERT INTO ProductOrder (OrderID, CustomerID, OrderDate, TotalAmount) VALUES ({order_id}, {customer_id}, '{order_date.strftime('%Y-%m-%d')}', {total_amount});")
+            f"INSERT INTO ProductOrder(OrderID, CustomerID, OrderDate, TotalAmount) VALUES ({order_id}, {customer_id}, '{order_date.strftime('%Y-%m-%d')}', {total_amount});")
         order_id += 1

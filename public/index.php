@@ -1,4 +1,5 @@
 <?php
+//TODO: エンコーディングの統一
 session_start();
 function isLoggedIn()
 {
@@ -9,6 +10,7 @@ function isLoggedIn()
     }
 }
 echo "<h1>kuso shop</h1>";
+
 if (isLoggedIn()) {
     require_once("../components/loggedin.php");
 } else {
@@ -31,7 +33,6 @@ $stmt->execute();
 
 <table>
     <script type="module" src="static/module.js"></script>
-    <div id="jsonp"></div>
     <tr>
         <th>Product img</th>
         <th>Product ID</th>
