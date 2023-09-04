@@ -44,7 +44,7 @@ for i in range(num_users):
     email = f"{first_name.lower()}.{last_name.lower()+str(customer_id)}@example.com"
     phone = f"080-{random.randint(1000,9999)}-{random.randint(1000,9999)}"
     print(
-        f"INSERT INTO Customer (CustomerID, FirstName, LastName, Email, Phone) VALUES ({customer_id}, '{first_name}', '{last_name}', '{email}', '{phone}');")
+        f"INSERT INTO Customer ( FirstName, LastName, Email, Phone) VALUES ( '{first_name}', '{last_name}', '{email}', '{phone}');")
 
     # Generate a random password for the customer
     password = "password"  # f"{first_name}{random.randint(1000,9999)}"
@@ -62,7 +62,7 @@ for i in range(len(product_names)):
     price = random.randint(min_price, max_price)
     description = product_descriptions[i]
     print(
-        f"INSERT INTO Product (ProductID, ProductName, Price, Description) VALUES ({product_id}, '{product_name}', {price}, '{description}');")
+        f"INSERT INTO Product ( ProductName, Price, Description) VALUES ( '{product_name}', {price}, '{description}');")
 # generate cart
 for i in range(num_users):
     customer_id = i + 1

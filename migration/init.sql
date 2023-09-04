@@ -6,7 +6,7 @@ USE KUSO_SHOP;
 
 -- 商品情報テーブルを作成する
 CREATE TABLE Product (
-    ProductID INT PRIMARY KEY,
+    ProductID INT PRIMARY KEY AUTO_INCREMENT,
     ProductName VARCHAR(50),
     Price INT,
     Description VARCHAR(255),
@@ -18,7 +18,7 @@ CREATE TABLE Customer (
     PostCode VARCHAR(8),
     CreditNumber VARCHAR(16),
     AddressLine VARCHAR(255),
-    CustomerID INT PRIMARY KEY,
+    CustomerID INT PRIMARY KEY AUTO_INCREMENT,
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
     Email VARCHAR(50) unique,
