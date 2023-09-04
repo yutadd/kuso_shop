@@ -7,6 +7,7 @@
 $dsn = 'mysql:dbname=KUSO_SHOP;host=localhost';
 $_user = getenv("KUSO_USER");
 $_password = getenv("KUSO_PASS");
+$action = filter_input(INPUT_POST, "action");
 
 try {
     $dbh = new PDO($dsn, $_user, $_password);
@@ -19,9 +20,14 @@ $id = filter_input(INPUT_POST, "productID") === null ? die("ID wasn' set a value
 $count = filter_input(INPUT_POST, "count") === null ? die("count wasn' set a value") : filter_input(INPUT_POST, "count");
 
 
-if (true) {
+if ($action==="add2Cart") {
     //$actionがadd2Cart
     if (is_string($id) && is_int($count)) {
+        if($count>0){
+            
+        }else{
+            die("個数が不正です");
+        }
         //もしすでに同じIDの商品が登録されている場合はcountを指定分増加、データベースに登録する
     }
 } elseif (false) {
