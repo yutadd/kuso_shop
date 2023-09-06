@@ -46,9 +46,24 @@ if ($action==="add2Cart") {
             http_response_code(400);
             die("個数が不正です");
         }
-} elseif (false$action==="removeFromCart") {
-    
+} elseif ($action==="removeFromCart") {
     //$actionがremoveFromCart
+    $stmt = $dbh->prepare('SELECT ProductID,Count FROM Cart WHERE CustomerID=? and CancelDate IS NULL');
+            $stmt->bindValue(1, $customerID, PDO::PARAM_INT);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                if($row["ProductID"]==$id){
+                    $stmt = $dbh->prepare('UPDATE SET Cart(CustomerID,ProductID,Count) VALUES(?,?,?)');
+                    $stmt->bindValue(1, $customerID, PDO::PARAM_INT);
+                    $stmt->bindValue(2, $id, PDO::PARAM_INT);
+                    $stmt->bindValue(3, $count, PDO::PARAM_INT);
+                    $stmt->execute();
+                    responseError(400,"あなたはすでに同じ商品をカートに追加されています。");
+                }else{
+                    
+                    echo "データを登録したよ！";
+                }
+            }
 } else {
     //$actionがupdateCart
 }
