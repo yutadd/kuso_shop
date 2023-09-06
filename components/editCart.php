@@ -47,22 +47,18 @@ if ($action==="add2Cart") {
             die("個数が不正です");
         }
 } elseif ($action==="removeFromCart") {
+    $customerID=$_SESSION["CustomerID"];
+    $id = is_numeric(filter_input(INPUT_POST, "productID"))? responseError(400,"ID wasn' provided") : filter_input(INPUT_POST, "productID");
     //$actionがremoveFromCart
-    $stmt = $dbh->prepare('SELECT ProductID,Count FROM Cart WHERE CustomerID=? and CancelDate IS NULL');
+    $stmt = $dbh->prepare('SELECT count(ProductID) FROM Cart WHERE CustomerID=? and CancelDate IS NULL');
             $stmt->bindValue(1, $customerID, PDO::PARAM_INT);
             $stmt->execute();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                if($row["ProductID"]==$id){
-                    $stmt = $dbh->prepare('UPDATE SET Cart(CustomerID,ProductID,Count) VALUES(?,?,?)');
-                    $stmt->bindValue(1, $customerID, PDO::PARAM_INT);
-                    $stmt->bindValue(2, $id, PDO::PARAM_INT);
-                    $stmt->bindValue(3, $count, PDO::PARAM_INT);
-                    $stmt->execute();
-                    responseError(400,"あなたはすでに同じ商品をカートに追加されています。");
-                }else{
-                    
-                    echo "データを登録したよ！";
-                }
+            if($stmt->fetch(PDO::FETCH_ASSOC)>0){
+                $stmt = $dbh->prepare('UPDATE SET Cart(CancelDate) VALUES(?) WHERE CustomerID=? AND ProductID=? and CancelDate IS NULL');
+                $stmt->bindValue(1, $customerID, PDO::PARAM_DATE);
+                $stmt->bindValue(2, $customerID, PDO::PARAM_INT);
+                $stmt->bindValue(3, $id, PDO::PARAM_INT);
+                $stmt->execute();
             }
 } else {
     //$actionがupdateCart
