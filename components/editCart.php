@@ -46,7 +46,8 @@ if ($action==="add2Cart") {
             http_response_code(400);
             die("個数が不正です");
         }
-} elseif (false) {
+} elseif (false$action==="removeFromCart") {
+    
     //$actionがremoveFromCart
 } else {
     //$actionがupdateCart
