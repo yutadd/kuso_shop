@@ -10,7 +10,7 @@ CREATE TABLE Product (
     ProductName VARCHAR(50),
     Price INT,
     Description VARCHAR(255),
-    DeleteDate DATE
+    DeleteDate VARCHAR(11)
 );
 
 -- 顧客情報テーブルを作成する
@@ -23,7 +23,7 @@ CREATE TABLE Customer (
     LastName VARCHAR(50),
     Email VARCHAR(50) unique,
     Phone VARCHAR(20),
-    DeleteDate DATE
+    DeleteDate VARCHAR(11)
 );
 
 -- カート
@@ -33,18 +33,18 @@ CREATE TABLE Cart(
     Count INT,
     FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
     FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
-    CancelDate Date
+    CancelDate VARCHAR(11)
 );
 -- 注文情報テーブルを作成する(OrderだとSQLの予約語なのでこの名前にしとる)。
 CREATE TABLE ProductOrder(
     PaymentMethod INT,
     OrderID INT PRIMARY KEY,
     CustomerID INT,
-    OrderDate DATE,
+    OrderDate VARCHAR(11),
     AddressLine VARCHAR(255),
     TotalAmount INT,
     FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
-    CancelDate Date
+    CancelDate VARCHAR(11)
 );
 
 -- パスワード保存用のテーブルを作成する
