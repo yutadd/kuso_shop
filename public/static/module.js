@@ -33,7 +33,7 @@ window.add2Cart = function (id, name, count) {
 };
 window.updateCart = function (id, name, count) {
   const formData = new FormData();
-  formData.append("action", "add2Cart");
+  formData.append("action", "updateCart");
   formData.append("productID", id);
   formData.append("count", count);
   const request = new XMLHttpRequest();
@@ -42,7 +42,7 @@ window.updateCart = function (id, name, count) {
   request.onreadystatechange=function(){
     if(request.readyState==4){
       if(request.status==200){
-        alert("response: "+request.responseText+"\r\n"+name + "を" + count + "個カートに追加した");
+        alert("response: "+request.responseText+"\r\nカートの"+name + "を" + count + "個に書き換えました");
       }else{
         alert(request.responseText)
       }

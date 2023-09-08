@@ -32,7 +32,7 @@ $stmt->execute();
         <tr>
             <td><?php echo $row["ProductName"] ?></td>
             <td><input type="number" id="product<?php echo $row["ProductID"] ?>" name="count" value="<?php echo $row["Count"] ?>"></td>
-            <td><button onclick="window.updateCart('<?php echo $row['ProductID'] ?>','<?php echo $row['ProductName'] ?>',document.getElementById('<?php echo 'product' . $row['ProductID'] ?>'))">個数変更</button></td><!-- TODO -->
+            <td><button onclick="window.updateCart('<?php echo $row['ProductID'] ?>','<?php echo $row['ProductName'] ?>',document.getElementById('<?php echo 'product' . $row['ProductID'] ?>').value)">個数変更</button></td><!-- TODO -->
             <td><button onclick="window.deleteFromCart('<?php echo $row['ProductID'] ?>','<?php echo $row['ProductName'] ?>')">削除</button></td>
         </tr>
         <!--オーダーの情報と編集用のボタンを表示-->
