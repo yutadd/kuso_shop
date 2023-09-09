@@ -15,21 +15,6 @@ window.add2Cart = function (id, name, count) {
       }
     }
   }
-  /*fetch("/cart.php", {
-    method: "POST",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body:JSON.stringify({ "action": "add2Cart", "productID": id, "count": count }),
-  }).then((e) => {
-    if (e.ok) {
-      alert(name + "を" + count + "個カートに追加した");
-    } else {
-      alert("エラーが発生しました。ログインしていますか？");
-    }
-  });*/
 };
 window.updateCart = function (id, name, count) {
   const formData = new FormData();
