@@ -26,7 +26,6 @@ $stmt->execute();
         <th>product name</th>
         <th>個数</th>
     </tr>
-
     <?php //ユーザーのカートの中身一覧を表示。
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
